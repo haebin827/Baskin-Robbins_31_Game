@@ -1,8 +1,9 @@
 package baskinrobbins31game;
 import java.util.*;
+
 public class BaskinRobbins31Game {
     public static void main(String[] args) {
-        //variables
+        //variables and classes to use
         Random rand = new Random();
         Scanner input = new Scanner(System.in);
         int choice = 1;
@@ -22,12 +23,17 @@ public class BaskinRobbins31Game {
                         if(choice == 0){
                             break;
                         }
-                        numberOfPlayers = choice;
+                        numberOfPlayers = choice;                
+                        //set the names of the bots
                         String[] bot = setName(choice, input);
 
                         //choose whether shuffle the order or not
                         choice = menu3(choice, input);
+                        //start the game
                         game(choice, numberOfPlayers, bot, rand, input);
+                        
+                        //end the game if you choose to leave after the game is over
+                        //(repeat the while loop if you choose to restart the game)
                         if(menu4(choice, input) == 2){
                             playAgain = false;
                         }
@@ -45,8 +51,8 @@ public class BaskinRobbins31Game {
                 break;
             }
         }
-
-        System.out.println("\n(=w=)/ < Good Bye! )");
+        //end the game
+        System.out.println("\n(=w=)/ < Good Bye!)");
     }
     
     public static void menu(){
@@ -56,7 +62,7 @@ public class BaskinRobbins31Game {
         System.out.print(">> ");
     }
     public static void description(){
-        System.out.println("\n(owo)/ < Game Rule )");
+        System.out.println("\n(owo)/ < Game Rule)");
         System.out.println("  When the game starts, each player calls the numbers from 1 to 31 sequentially.");
         System.out.println("  You can call 1 to 3 consecutive numbers at a time, and the player cannot select as many numbers as the previous player has called in succession.");
         System.out.println("  Whoever calls the number 31 loses!");
@@ -86,7 +92,7 @@ public class BaskinRobbins31Game {
         return choice;
     }
     public static int menu3(int choice, Scanner input){
-        System.out.println("\nDo you want to be the first? Want to shuffle the order?");
+        System.out.println("\nDo you want to be the first? Or want to shuffle the order?");
         System.out.println("1. Yes, I want to play first!");
         System.out.println("2. No, shuffle the order!");
         System.out.print(">> ");
@@ -113,7 +119,7 @@ public class BaskinRobbins31Game {
                     
         while(result < 31){
             
-            //Bot turn
+            //Bot's turn
             for(int i = 0; i<playerOrder; i++){
                 System.out.print(bot[i] + ": ");
                 do{
@@ -134,8 +140,8 @@ public class BaskinRobbins31Game {
                 break;
             }
             
-            //Player turn
-            System.out.print("How many numbers will you call? (pick between 1~3): ");
+            //Player's turn
+            System.out.print("How many numbers do you want to call? (pick between 1~3): ");
             call = input.nextInt();
             while(call == prior_number || call < 1 || call > 3){
                 if(call == prior_number){
@@ -158,7 +164,7 @@ public class BaskinRobbins31Game {
                     break;
             }
             
-            //Bot turn
+            //Bot's turn
             for(int i = playerOrder; i<numberOfPlayers; i++){
                 System.out.print(bot[i] + ": ");
                 do{
@@ -180,7 +186,6 @@ public class BaskinRobbins31Game {
             }
         }
         if(who == -1){
-            //Thread.sleep(1000);
             System.out.println("\nYou Lose!");
         }
         else{
