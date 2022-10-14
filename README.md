@@ -12,3 +12,7 @@ The user enters the number of players to play. (The number of people entered is 
 | Start Date: 9-27-2022 |
 | End Date: 10-3-2022 |
 | JDK Version: 18.0.2.1 |
+
+|Start Date | End Date |
+| --- | --- |
+| 9-27-2022 | 10-3-2022 |
